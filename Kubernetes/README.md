@@ -4,6 +4,9 @@
 
     * Para ello se debe ralizar la siguiente configuracion en las VMs 
 
+    * Pueden descargar las imangenes de las maquinas virtuales aqui:
+
+        [Imagenes]()
 
     ## Configuracion
 

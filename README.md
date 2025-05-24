@@ -18,6 +18,49 @@
 
     ## Despliege con Docker Compose
 
+    * Para desplegar con docker compose solo debemos ejecutar los comandos:
+
+        ```bash
+        cd Docker 
+        sudo docker compose up --build
+        ```
+
     ## Despliege con Kubernetes Un Nodo
 
+    * Ejecutar los siguientes comandos 
+
+    ```bash
+    sudo chmod +x script-nodo-2.sh
+    ./script-nodo-2.sh
+    chmod +x /Kubernetes/script.sh
+    ./Kubernetes/script.sh
+    ```
+
     ## Depliege con kubernetes Dos Nodos
+
+    * Ejecutar los siguientes comandos en el Nodo 2: 
+
+        ```bash
+            sudo chmod +x script-nodo-2.sh
+            ./script-nodo-2.sh
+        ```
+
+    * Ejecutar los siguientes comandos en el Nodo 1: 
+
+        ```bash
+        sudo chmod +x script-nodo-1.sh
+        # en el nodo 1 (**Nodo padre**) 
+        ./script-nodo-1.sh
+        # Debera retonar un linea como esta
+        ```
+        ```bash
+        Join node with: microk8s join 192.168.1.10:25000/abcdef1234567890abcdef1234567890
+        ```
+        * Ejecutar esa linea de codigo en el Nodo 2
+    
+    * Ejecutar los siguietnes comandos en el Nodo 1:
+
+        ```bash
+            sudo chmod +x script-nodo-2.sh
+            ./script-nodo-2.sh
+        ```
