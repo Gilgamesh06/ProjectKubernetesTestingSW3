@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db-venta
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: db-venta
+  template:
+    metadata:
+      labels:
+        app: db-venta
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:14
+          ports:
+            - containerPort: 5432
+          env:
+            - name: POSTGRES_DB
+              value: ecommerce_venta
+            - name: POSTGRES_USER
+              value: Solus
+            - name: POSTGRES_PASSWORD
+              value: "123456"
+          volumeMounts:
+            - name: postgres-storage
+              mountPath: /var/lib/postgresql/data
+      volumes:
+        - name: postgres-storage
+          persistentVolumeClaim:
+            claimName: pvc-db-venta
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: db-venta
+spec:
+  selector:
+    app: db-venta
+  ports:
+    - port: 5432

@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: venta
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: venta
+  template:
+    metadata:
+      labels:
+        app: venta
+    spec:
+      containers:
+        - name: venta
+          image: gilgamesh06/venta:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:postgresql://db-venta:5432/ecommerce_venta
+            - name: SPRING_DATASOURCE_USERNAME
+              value: Solus
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: "123456"
+            - name: SPRING_RABBITMQ_HOST
+              value: rabbitmq
+            - name: SPRING_RABBITMQ_PORT
+              value: "5672"
+            - name: SPRING_RABBITMQ_USERNAME
+              value: admin
+            - name: SPRING_RABBITMQ_PASSWORD
+              value: "123456"

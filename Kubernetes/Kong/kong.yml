@@ -1,0 +1,170 @@
+_format_version: "3.0"
+
+services:
+  - name: inventario-service
+    url: http://inventario:8080
+  - name: ventas-service
+    url: http://venta:8080
+  - name: pedidos-service
+    url: http://pedido:8080
+  - name: carrito-service
+    url: http://carrito:8080
+
+routes:
+  # Rutas del Microservicio de Inventario
+  - name: inventario-filtros-route
+    service: inventario-service
+    paths:
+      - /api/v1/catalogo/filtros
+    methods:
+      - GET
+    strip_path: false
+
+  - name: inventario-target-route
+    service: inventario-service
+    paths:
+      - /api/v1/catalogo/{target}
+    methods:
+      - GET
+    strip_path: false
+
+  - name: inventario-listar-todos-route
+    service: inventario-service
+    paths:
+      - /api/v1/inventario/listar-todos
+    methods:
+      - GET
+    strip_path: false
+
+  - name: inventario-listar-route
+    service: inventario-service
+    paths:
+      - /api/v1/inventario/listar
+    methods:
+      - GET
+    strip_path: false
+
+  - name: inventario-agregar-route
+    service: inventario-service
+    paths:
+      - /api/v1/inventario/agregar
+    methods:
+      - POST
+    strip_path: false
+
+  # Rutas del Microservicio de Ventas
+  - name: ventas-realiza-venta-route
+    service: ventas-service
+    paths:
+      - /api/v1/ventas/realiza-venta
+    methods:
+      - POST
+    strip_path: false
+
+  - name: ventas-listar-ventas-route
+    service: ventas-service
+    paths:
+      - /api/v1/ventas/listar-ventas
+    methods:
+      - GET
+    strip_path: false
+
+  - name: ventas-obtener-venta-route
+    service: ventas-service
+    paths:
+      - /api/v1/obtener-venta/{referencia}
+    methods:
+      - GET
+    strip_path: false
+
+  # Rutas del Microservicio de Pedidos
+
+  - name: pedidos-listar-pedidos-route
+    service: pedidos-service
+    paths:
+      - /api/v1/pedido/listar-pedidos
+    methods:
+      - GET
+    strip_path: false
+
+  - name: pedidos-listar-referencia-route
+    service: pedidos-service
+    paths:
+      - /api/v1/pedido/listar/{referencia}
+    methods:
+      - GET
+    strip_path: false
+
+  - name: pedidos-listar-completo-route
+    service: pedidos-service
+    paths:
+      - /api/v1/pedido/listar-completo
+    methods:
+      - GET
+    strip_path: false
+
+  # Rutas del Microservicio de Carrito
+  - name: carrito-iniciar-route
+    service: carrito-service
+    paths:
+      - /api/v1/carrito/iniciar
+    methods:
+      - GET
+    strip_path: false
+
+  - name: carrito-agregar-producto-route
+    service: carrito-service
+    paths:
+      - /api/v1/carrito/{sessionId}/agregar/{productId}
+    methods:
+      - POST
+    strip_path: false
+
+  - name: carrito-eliminar-producto-route
+    service: carrito-service
+    paths:
+      - /api/v1/carrito/{sessionId}/eliminar/{productId}
+    methods:
+      - DELETE
+    strip_path: false
+
+  - name: carrito-actualizar-cantidad-route
+    service: carrito-service
+    paths:
+      - /api/v1/carrito/{sessionId}/actualizar/{productoId}/{cantidad}
+    methods:
+      - PUT
+    strip_path: false
+
+  - name: carrito-aumentar-cantidad-route
+    service: carrito-service
+    paths:
+      - /api/v1/carrito/{sessionId}/aumentar/{productoId}
+    methods:
+      - PUT
+    strip_path: false
+
+  - name: carrito-disminuir-cantidad-route
+    service: carrito-service
+    paths:
+      - /api/v1/carrito/{sessionId}/disminuir/{productoId}
+    methods:
+      - PUT
+    strip_path: false
+
+  - name: carrito-comprar-route
+    service: carrito-service
+    paths:
+      - /api/v1/carrito/{sessionId}/comprar
+    methods:
+      - GET
+    strip_path: false
+
+  - name: carrito-obtener-route
+    service: carrito-service
+    paths:
+      - /api/v1/carrito/{sessionId}
+    methods:
+      - GET
+    strip_path: false
+      

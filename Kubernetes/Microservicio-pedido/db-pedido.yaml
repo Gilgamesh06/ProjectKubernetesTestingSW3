@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db-pedido
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: db-pedido
+  template:
+    metadata:
+      labels:
+        app: db-pedido
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:14
+          ports:
+            - containerPort: 5432
+          env:
+            - name: POSTGRES_DB
+              value: ecommerce_pedido
+            - name: POSTGRES_USER
+              value: Solus
+            - name: POSTGRES_PASSWORD
+              value: "123456"
+          volumeMounts:
+            - name: postgres-storage
+              mountPath: /var/lib/postgresql/data
+      volumes:
+        - name: postgres-storage
+          persistentVolumeClaim:
+            claimName: pvc-db-pedido
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: db-pedido
+spec:
+  selector:
+    app: db-pedido
+  ports:
+    - port: 5432

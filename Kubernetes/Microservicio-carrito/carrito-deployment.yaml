@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: carrito
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: carrito
+  template:
+    metadata:
+      labels:
+        app: carrito
+    spec:
+      containers:
+        - name: carrito
+          image: gilgamesh06/carrito:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_REDIS_HOST
+              value: redis-carrito
+            - name: SPRING_REDIS_PORT
+              value: "6379"
