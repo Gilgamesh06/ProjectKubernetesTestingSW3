@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: venta
-          image: gilgamesh06/venta:latest
+          image: gilgamesh06/venta:v1.0
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080

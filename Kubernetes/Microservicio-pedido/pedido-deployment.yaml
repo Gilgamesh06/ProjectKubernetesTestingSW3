@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: pedido
-          image: gilgamesh06/pedido:latest
+          image: gilgamesh06/pedido:v1.0
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080

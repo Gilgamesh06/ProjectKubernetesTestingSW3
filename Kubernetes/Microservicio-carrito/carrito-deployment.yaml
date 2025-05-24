@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: carrito
-          image: gilgamesh06/carrito:latest
+          image: gilgamesh06/carrito:v1.0
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080

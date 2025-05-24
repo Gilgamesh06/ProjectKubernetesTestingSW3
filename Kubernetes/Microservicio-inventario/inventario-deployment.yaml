@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: inventario
-          image: gilgamesh06/inventario:latest
+          image: gilgamesh06/inventario:v1.0
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
