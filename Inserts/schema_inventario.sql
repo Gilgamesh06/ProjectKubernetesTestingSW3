@@ -1,9 +1,9 @@
 -- Conectarse a la base de datos correcta (opcional, psql lo hace con -d)
 -- \c ecommerce_inventario Solus;
 
--- Eliminar tablas si existen para asegurar un estado limpio (OPCIONAL, ¡CUIDADO!)
--- Si quieres que este script sea re-ejecutable y siempre empiece de cero,
--- puedes añadir estas líneas. Pero si ya tienes datos que quieres conservar, NO las uses.
+-- Eliminar tablas si existen para asegurar un estado limpio
+-- Si se quiere asegurar que este script sea re-ejecutable y siempre empiece desde cero,
+-- se puede añadir estas líneas. Pero si ya se tienen los datos que se quieren conservar, NO usarlo.
 /*
 DROP TABLE IF EXISTS detalle_merma;
 DROP TABLE IF EXISTS merma;
@@ -19,12 +19,12 @@ CREATE TABLE IF NOT EXISTS detalle_producto (
     composicion VARCHAR(255),
     pais VARCHAR(100)
 );
-ALTER TABLE detalle_producto OWNER TO "Solus"; -- Asegurar propietario correcto
+ALTER TABLE detalle_producto OWNER TO "Solus";
 
 -- Crear tabla producto
 CREATE TABLE IF NOT EXISTS producto (
     id SERIAL PRIMARY KEY,
-    detalle_producto_id INTEGER, -- FK se añade después si quieres, o directamente
+    detalle_producto_id INTEGER,
     referencia VARCHAR(50) UNIQUE,
     nombre VARCHAR(255),
     tipo VARCHAR(100),
@@ -37,14 +37,14 @@ CREATE TABLE IF NOT EXISTS producto (
     CONSTRAINT fk_detalle_producto
         FOREIGN KEY(detalle_producto_id)
         REFERENCES detalle_producto(id)
-        ON DELETE SET NULL -- O ON DELETE CASCADE, dependiendo de tu lógica de negocio
+        ON DELETE SET NULL -- O ON DELETE CASCADE
 );
 ALTER TABLE producto OWNER TO "Solus";
 
 -- Crear tabla inventario
 CREATE TABLE IF NOT EXISTS inventario (
     id SERIAL PRIMARY KEY,
-    producto_id INTEGER UNIQUE, -- Asumo que cada producto tiene una única entrada de inventario
+    producto_id INTEGER UNIQUE,
     cantidad INTEGER,
     CONSTRAINT fk_producto_inventario
         FOREIGN KEY(producto_id)
