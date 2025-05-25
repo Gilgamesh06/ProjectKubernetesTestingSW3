@@ -18,14 +18,14 @@
     ## Ubicarse en la ruta del script y ejecutar:
 
      ```bash
-    psql -h localhost -p 5433 -U Solus -d ecommerce_inventario -f ./schema_inventario.sql
-    ```
+     psql -h localhost -p 5433 -U Solus -d ecommerce_inventario -f ./schema_inventario.sql
+     ```
 
     ## Ingresar con la contraseña: 123456
 
     ## Verificar que las tablas se crearon:
 
-      ```bash
+    ```bash
     psql -h localhost -p 5433 -U Solus -d ecommerce_inventario
     ```
 
