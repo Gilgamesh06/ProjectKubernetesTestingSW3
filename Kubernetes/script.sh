@@ -42,7 +42,7 @@ sudo microk8s kubectl apply -f Microservicio-pedido/pedido-deployment.yaml -n $N
 sudo microk8s kubectl apply -f Microservicio-pedido/pedido-service.yaml -n $NAMESPACE
 ## Carrito
 sudo microk8s kubectl apply -f Microservicio-carrito/carrito-deployment.yaml -n $NAMESPACE
-sudo microk8s kubectl apply -f Microservicio-carrito/carrito.service.yaml -n $NAMESPACE
+sudo microk8s kubectl apply -f Microservicio-carrito/carrito-service.yaml -n $NAMESPACE
 
 # Crear el ConfigMap para Kong.yml
 cd Kong
