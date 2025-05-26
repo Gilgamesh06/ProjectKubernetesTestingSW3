@@ -49,7 +49,7 @@ cd Kong
 sudo microk8s kubectl create configmap kong-config --from-file=kong.yml -n $NAMESPACE
 
 # Crear el Kong
-kubectl apply -f kong-deployment.yaml -n $NAMESPACE
-kubectl apply -f kong-service.yaml -n $NAMESPACE
+sudo kubectl apply -f kong-deployment.yaml -n $NAMESPACE
+sudo kubectl apply -f kong-service.yaml -n $NAMESPACE
 
 cd ..
