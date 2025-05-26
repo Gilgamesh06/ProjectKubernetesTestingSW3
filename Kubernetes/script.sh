@@ -22,13 +22,16 @@ sudo microk8s kubectl apply -f Microservicio-carrito/redis-carrito.yaml -n $NAME
 ## Inventario
 sudo microk8s kubectl apply -f Microservicio-inventario/db-inventario.yaml -n $NAMESPACE
 sudo microk8s kubectl apply -f Microservicio-inventario/pvc-db-inventario.yaml -n $NAMESPACE
+sudo microk8s kubectl apply -f pv-db-inventario.yaml -n $NAMESPACE
+
 ## Venta
 sudo microk8s kubectl apply -f Microservicio-venta/db-venta.yaml -n $NAMESPACE
 sudo microk8s kubectl apply -f Microservicio-venta/pvc-db-venta.yaml -n $NAMESPACE
+sudo microk8s kubectl apply -f pv-db-venta.yaml -n $NAMESPACE
 ## Pedido
 sudo microk8s kubectl apply -f Microservicio-pedido/db-pedido.yaml -n $NAMESPACE
 sudo microk8s kubectl apply -f Microservicio-pedido/pvc-db-pedido.yaml -n $NAMESPACE
-
+sudo microk8s kubectl apply -f pv-db-pedido.yaml -n $NAMESPACE
 
 # Crea los Microservicios: (Utiliza las imagenes que esta en dockerHub)
 

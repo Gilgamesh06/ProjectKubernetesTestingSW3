@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-db-inventario
+spec:
+  capacity:
+    storage: 1Gi  # Debe ser al menos 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:  # Cambia esto según tu entorno
+    path: /mnt/data/db-inventario  # Asegúrate de que esta ruta exista en el nodo
+
