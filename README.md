@@ -32,7 +32,7 @@
     ```bash
     sudo chmod +x script-nodo-2.sh
     ./script-nodo-2.sh
-    chmod +x /Kubernetes/script.sh
+    chmod +x Kubernetes/script.sh
     ./Kubernetes/script.sh
     ```
 
