@@ -17,6 +17,8 @@ sudo microk8s kubectl apply -f Rabbitmq/rabbitmq-service.yaml -n $NAMESPACE
 
 # Database
 
+## Carrito 
+sudo microk8s kubectl apply -f Microservicio-carrito/redis-carrito.yaml -n $NAMESPACE
 ## Inventario
 sudo microk8s kubectl apply -f Microservicio-inventario/db-inventario.yaml -n $NAMESPACE
 sudo microk8s kubectl apply -f Microservicio-inventario/pvc-db-inventario.yaml -n $NAMESPACE
@@ -26,8 +28,7 @@ sudo microk8s kubectl apply -f Microservicio-venta/pvc-db-venta.yaml -n $NAMESPA
 ## Pedido
 sudo microk8s kubectl apply -f Microservicio-pedido/db-pedido.yaml -n $NAMESPACE
 sudo microk8s kubectl apply -f Microservicio-pedido/pvc-db-pedido.yaml -n $NAMESPACE
-## Carrito 
-sudo microk8s kubectl apply -f Microservicio-carrito/redis-carrito.yaml -n $NAMESPACE
+
 
 # Crea los Microservicios: (Utiliza las imagenes que esta en dockerHub)
 
